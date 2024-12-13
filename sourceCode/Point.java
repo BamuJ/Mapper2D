@@ -9,6 +9,7 @@ public class Point{
     public Point(double longitude, double latitude){
         this.longitude = longitude;
         this.latitude = latitude;
+        this.elevation = 0;
     }
 
     public void setLocation(double longitude, double latitude)

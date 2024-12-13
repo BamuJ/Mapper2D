@@ -1,4 +1,5 @@
 import sourceCode.Point;
+import sourceCode.Route;
 
 public class testmain 
 {
@@ -22,8 +23,51 @@ public class testmain
         //Operations on points
         //Getting latitude and longitude of point
         double[] location = point1.getLocation();
-        System.out.println(location[0] + " " + location[1]);
+        System.out.println("Location of point: " + location[0] + " " + location[1]);
 
+        //Getting elevation of point
+        double elevationOfPoint = point1.getElevation();
+        System.out.println("\nElevation Of Point: " + elevationOfPoint);
 
+        //Setting Elevation of point
+        point1.setElevation(1.5637);
+        double updatedElevation = point1.getElevation();
+        System.out.println("\nUpdated Elevation of point: " + updatedElevation);
+
+        // Updating location of point
+        point1.setLocation(1.34542381, 5.32569412);
+        double[] newLocation = point1.getLocation();
+        System.out.println("\nUpdated Location of point: " + newLocation[0] + " " + newLocation[1]);
+
+        //Using the route class
+        Route newRoute = new Route(0);
+
+        //Adding points to the route
+        newRoute.addPoint(point1);
+        newRoute.addPoint(point2);
+        newRoute.addPoint(point3);
+        newRoute.addPoint(point4);
+        newRoute.addPoint(point5);
+        newRoute.addPoint(point6);
+        newRoute.addPoint(point7);
+        newRoute.addPoint(point8);
+        newRoute.addPoint(point9);
+
+        //Checking all the points on the route
+        Point[] pointsOnRoute = newRoute.getCurrentRoute();
+
+        System.out.println("\nPoints on Route: ");
+        for(int i = 0; i < newRoute.getSize(); i++)
+        {
+            System.out.println("\t" + pointsOnRoute[i].toString());
+        }
+
+        //Getting the starting point
+        Point startPoint = newRoute.getStartPoint();
+        System.out.println("\nStarting point: " + startPoint.getLatitude() + " " + startPoint.getLongitude());
+
+         //Getting the ending point
+         Point endPoint = newRoute.getEndPoint();
+         System.out.println("\nEnding point: " + endPoint.getLatitude() + " " + endPoint.getLongitude());
     }
 }

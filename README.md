@@ -3,10 +3,6 @@
 ## Descriptions
 This library was mainly intended to help in 3D mapping of buildings and small areas using mainly GPS coordinates and elevations to form routes, points and connections between those points. These can be used to generate 3D maps that offer a way for users to find their way around an office space. With enough data, we could reconstruct a 3D visualization of the building and that can have multiple applications like route planning, in-house guidance systems.
 
-Qn. Tell me a little about your library.
-
-Qn. What features does your library offer?
-
 ## Features
 1. Point
 

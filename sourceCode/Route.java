@@ -19,7 +19,7 @@ public class Route{
         this.numberOfConnectingLines = 0;
     }
 
-    public boolean increaseRouteArray(){
+    private boolean increaseRouteArray(){
 
         if(isRouteArrayComplete()){
             Point[] newArray = new Point[this.currentRoute.length * 2];
@@ -35,8 +35,10 @@ public class Route{
         else return false;
     }
 
-    public boolean isRouteArrayComplete(){
-        if(this.size == this.currentRoute.length) return true;
+    private boolean isRouteArrayComplete(){
+        if(this.size == this.currentRoute.length){
+            return true;
+        }
         else return false;
     }
 
@@ -47,11 +49,11 @@ public class Route{
                 this.currentRoute[this.size] = point;
                 this.size++;
 
+                
                 if(this.size == 1){
                     this.startPoint = point;
                     this.endPoint = point;
                 }
-
                 else{
                     if(this.numberOfConnectingLines == this.connectingLines.length){
                         increaseConnectingLinesArray();
@@ -59,6 +61,7 @@ public class Route{
                                 ConnectingLine newConnectingLine = new ConnectingLine(this.currentRoute[getSize() - 1], point);
                                 this.connectingLines[this.numberOfConnectingLines] = newConnectingLine;
                                 this.numberOfConnectingLines++;
+                                this.endPoint = point;
                             } 
                     }
 
@@ -68,9 +71,12 @@ public class Route{
                             this.connectingLines[this.numberOfConnectingLines] = newConnectingLine;
                             this.numberOfConnectingLines++;
                         } 
+
+                        this.endPoint = point;
                     }
 
                     this.endPoint = point;
+                    System.out.println(point.getLatitude() + " "+  point.getLongitude());
                 
 
                 return true;
@@ -78,6 +84,9 @@ public class Route{
         }
         else{
             increaseRouteArray();
+            this.currentRoute[this.size] = point;
+            this.size++;
+            this.endPoint = point;
         }
 
         return false;
@@ -104,7 +113,7 @@ public class Route{
     }
 
 
-    public boolean increaseConnectingLinesArray(){
+    private boolean increaseConnectingLinesArray(){
 
         if(this.connectingLines.length == this.numberOfConnectingLines){
             ConnectingLine[] newArray = new ConnectingLine[this.connectingLines.length * 2];
