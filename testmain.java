@@ -1,5 +1,6 @@
 import sourceCode.Point;
 import sourceCode.Route;
+import sourceCode.RouteManager;
 
 public class testmain 
 {
@@ -41,6 +42,10 @@ public class testmain
 
         //Using the route class
         Route newRoute = new Route(0);
+        Route newRoute1 = new Route(2);
+        Route newRoute2 = new Route(3);
+
+        Route newRoute3 = new Route(6);
 
         //Adding points to the route
         newRoute.addPoint(point1);
@@ -52,6 +57,14 @@ public class testmain
         newRoute.addPoint(point7);
         newRoute.addPoint(point8);
         newRoute.addPoint(point9);
+
+        newRoute1.addPoint(point4);
+        newRoute1.addPoint(point5);
+        newRoute1.addPoint(point6);
+
+        newRoute2.addPoint(point3);
+        newRoute2.addPoint(point7);
+        newRoute2.addPoint(point10);
 
         //Checking all the points on the route
         Point[] pointsOnRoute = newRoute.getCurrentRoute();
@@ -66,8 +79,26 @@ public class testmain
         Point startPoint = newRoute.getStartPoint();
         System.out.println("\nStarting point: " + startPoint.getLatitude() + " " + startPoint.getLongitude());
 
-         //Getting the ending point
-         Point endPoint = newRoute.getEndPoint();
-         System.out.println("\nEnding point: " + endPoint.getLatitude() + " " + endPoint.getLongitude());
+        //Getting the ending point
+        Point endPoint = newRoute.getEndPoint();
+        System.out.println("\nEnding point: " + endPoint.getLatitude() + " " + endPoint.getLongitude());
+
+        //Creating a route manager
+        RouteManager routeManager = new RouteManager(10);
+        routeManager.addRoute(newRoute);
+        routeManager.addRoute(newRoute1);
+        routeManager.addRoute(newRoute2);
+
+        //Searching For newRoute2
+        if(routeManager.searchRoute(newRoute3))
+        {
+            System.out.println("\nThe Route exists in the manager class");
+        }else{
+            System.out.println("\nThe Route doesn't exists in the manager class");
+        }
+
+
+
+
     }
 }

@@ -3,7 +3,7 @@ package sourceCode;
 /*
  * Route Manager
  * Manages all routes
- * Used to add routes, remove routes as well as
+ * Used to add routes, remove routes as well as search for routes
  */
 public class RouteManager {
     
@@ -26,15 +26,18 @@ public class RouteManager {
                 Route[] newRoutes = new Route[this.routes.length * 2];
                 
                 for(int i = 0; i < this.routes.length; i++){
+
                     newRoutes[i] = this.routes[i];
+                }
 
                 this.routes = newRoutes;
-                }
 
             }
 
             this.routes[this.numberOfRoutes] = route;
+            //System.out.println(route.getId());
             this.numberOfRoutes++;
+
             return true;
         }
         catch(Exception ex){
